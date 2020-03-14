@@ -1,11 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
+import { ListOfCategories } from './components/ListOfCategories'
+import { GlobalStyles } from './GlobalStyles'
+import { ListOfPhotoCards } from './components/ListOfPhotoCards'
+import { Logo } from './components/Logo'
 
 export const App = () => (
-  <Title>Estamos listos para seguir</Title>
+  <>
+    <Logo />
+    <GlobalStyles />
+    <ListOfCategories />
+    <ListOfPhotoCards />
+  </>
 )
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  color: palevioletred;
-`
