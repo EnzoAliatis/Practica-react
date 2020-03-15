@@ -1,8 +1,7 @@
 import React from 'react'
 import { PhotoCard } from '../PhotoCard'
-import { withPhotos } from '../../hoc/withPhotos'
 
-const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => (
+export const ListOfPhotoCards = ({ data: { photos = [] } } = {}) => (
   <ul>
     {
       photos.map(photo => (
@@ -11,5 +10,3 @@ const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => (
     }
   </ul>
 )
-
-export const ListOfPhotoCards = withPhotos(ListOfPhotoCardsComponent)

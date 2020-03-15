@@ -17,8 +17,12 @@ const GET_PHOTOS = gql`
   }
 `
 const renderProps = ({ loading, error, data }) => {
+  if (loading) {
+    return <p>Cargando</p>
+  }
   return <ListOfPhotoCards data={data} />
 }
+
 export const ListOfPhotoCardWithQuery = () => (
   <Query query={GET_PHOTOS}>
     {renderProps}
