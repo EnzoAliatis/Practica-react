@@ -16,7 +16,7 @@ export const PhotoCard = ({ id, likes = 0, src = 'https://images.unsplash.com/ph
     <Article ref={element}>
       {show &&
         <>
-          <a href={`detail/${id}`}>
+          <a href={`/?detail=${id}`}>
             <ImgWrapper>
               <Image src={src} />
             </ImgWrapper>

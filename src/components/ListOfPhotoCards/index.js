@@ -1,12 +1,15 @@
 import React from 'react'
 import { PhotoCard } from '../PhotoCard'
+import { withPhotos } from '../../hoc/withPhotos'
 
-export const ListOfPhotoCards = () => (
+const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => (
   <ul>
     {
-      [1, 2, 3, 4, 5, 6, 7, 8, 9].map(id => (
-        <PhotoCard key={id} id={id} />
+      photos.map(photo => (
+        <PhotoCard key={photo.id} {...photo} />
       ))
     }
   </ul>
 )
+
+export const ListOfPhotoCards = withPhotos(ListOfPhotoCardsComponent)
