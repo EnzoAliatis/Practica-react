@@ -24,7 +24,6 @@ export const ListOfCategories = () => {
       {
         isLoading ? <Item key='loading'><Category /></Item>
           : categories.map((category) => {
-            console.log(category)
             return <Item key={category.id}><Category {...category} path={`/pet/${category.id}`} /></Item>
           })
       }

@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link as LinkRouter } from '@reach/router'
 import styled from 'styled-components'
 
 const DEFAULT_IMG = 'https://i.imgur.com/dJa0Hpl.jpg'
 
-export const Category = ({ cover = DEFAULT_IMG, path, emoji = '?' }) => (
-  <Achor href={path}>
+export const Category = ({ cover = DEFAULT_IMG, path = '#', emoji = '?' }) => (
+  <Link to={path}>
     <Image src={cover} />
     {emoji}
-  </Achor>
+  </Link>
 )
 
-const Achor = styled.a`
+const Link = styled(LinkRouter)`
   display: flex;
   flex-direction: column;
   text-align: center;
