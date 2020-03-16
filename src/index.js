@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import { App } from './App'
+import Context from './Context'
 
 const client = new ApolloClient({
   uri: 'https://petgram-server-enzo.enzoaliatis.now.sh/graphql'
 })
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>, document.getElementById('app'))
+  <Context.Provider value={{ isAuth: false }}>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Context.Provider>, document.getElementById('app'))
