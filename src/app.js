@@ -1,14 +1,16 @@
 import React from 'react'
-import { ListOfCategories } from './components/ListOfCategories'
+import { Router } from '@reach/router'
 import { GlobalStyles } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
-import { ListOfPhotoCardWithQuery } from './containers/ListOfPhotoCardWithQuery'
+import { Home } from './pages/Home'
 
 export const App = () => (
   <>
-    <Logo />
     <GlobalStyles />
-    <ListOfCategories />
-    <ListOfPhotoCardWithQuery />
+    <Logo />
+    <Router>
+      <Home path='/' />
+      <Home path='/pet/:id' />
+    </Router>
   </>
 )

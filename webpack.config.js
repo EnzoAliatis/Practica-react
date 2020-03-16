@@ -3,7 +3,8 @@ module.exports = {
   // por que webpack tiene que esportar un objeto
   output: {
     // le decimos a webpack como se va a llamar el archivo con el js empaquetado
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
