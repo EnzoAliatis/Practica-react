@@ -6,6 +6,15 @@ import { App } from './App'
 import Context from './Context'
 
 const client = new ApolloClient({
+  request: operation => {
+    const token = window.sessionStorage.getItem('token')
+    const authorization = token ? `Bearer ${token}` : ''
+    operation.setContext({
+      headers: {
+        authorization
+      }
+    })
+  },
   uri: 'https://petgram-server-enzo.enzoaliatis.now.sh/graphql'
 })
 ReactDOM.render(

@@ -16,7 +16,11 @@ const Link = styled(LinkRouter)`
   flex-direction: column;
   text-align: center;
   text-decoration: none;
-  width: 75px
+  width: 75px;
+  &[aria-current] {
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+  }
 `
 
 const Image = styled.img`
