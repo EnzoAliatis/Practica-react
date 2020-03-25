@@ -57,4 +57,7 @@ const Image = styled.img`
 
 const Article = styled.article`
   min-height: 200px;
+  :last-child {
+    margin-bottom: 50px;
+  }
 `

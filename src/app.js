@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-closing-tag-location */
 
-import React from 'react'
-import { Router } from '@reach/router'
+import React, { useContext } from 'react'
+import { Router, Redirect } from '@reach/router'
 import { GlobalStyles } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
 import { Home } from './pages/Home'
@@ -10,31 +10,29 @@ import { Favs } from './pages/Favs'
 import { User } from './pages/User'
 import { NotRegisterUser } from './pages/NotRegisterUser'
 import { NavBar } from './components/NavBar'
-import Context from './Context'
+import { Context } from './Context'
+import { NotFound } from './pages/NotFound'
 
-export const App = () => (
-  <>
-    <GlobalStyles />
-    <Logo />
-    <Router>
-      <Home path='/' />
-      <Home path='/pet/:id' />
-      <Detail path='/detail/:id' />
-    </Router>
-    <Context.Consumer>
-      {
-        ({ isAuth }) =>
-          isAuth
-            ? <Router>
-              <Favs path='favs' />
-              <User path='user' />
-            </Router>
-            : <Router>
-              <NotRegisterUser path='favs' />
-              <NotRegisterUser path='user' />
-            </Router>
-      }
-    </Context.Consumer>
-    <NavBar />
-  </>
-)
+export const App = () => {
+  const { isAuth } = useContext(Context)
+
+  return (
+    <>
+      <GlobalStyles />
+      <Logo />
+      <Router>
+        <NotFound default />
+        <Home path='/' />
+        <Home path='/pet/:id' />
+        <Detail path='/detail/:id' />
+        {!isAuth && <NotRegisterUser path='/login' />}
+        {!isAuth && <Redirect from='/favs' to='/login' noThrow />}
+        {!isAuth && <Redirect from='/user' to='/login' noThrow />}
+        {isAuth && <Redirect from='/login' to='/' noThrow />}
+        <Favs path='favs' />
+        <User path='user' />
+      </Router>
+      <NavBar />
+    </>
+  )
+}
