@@ -4,7 +4,7 @@ import { Category } from '../Category'
 import { fadeIn } from '../../styles/animation'
 import { useFetch } from '../../hooks/useFetch'
 
-export const ListOfCategories = () => {
+const ListOfCategoriesComponent = () => {
   const [showFixed, setShowFixed] = useState(false)
   const [categories, isLoading] = useFetch('https://petgram-server-enzo.enzoaliatis.now.sh/categories')
 
@@ -37,6 +37,8 @@ export const ListOfCategories = () => {
     </>
   )
 }
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)
 
 const List = styled.ul`
   ${fadeIn({ time: '0.4s' })}
