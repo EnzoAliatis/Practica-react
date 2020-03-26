@@ -1,3 +1,10 @@
-# React simple started pack ⚛️
+# Petgram
 
-## with webpack, babel, styledComponents
+PWA clone simple de instagram.
+
+[Ver el ejemplo en el siguiente link](https://petgram-client.enzoaliatis.now.sh/)
+
+### Instalación
+
+npm i
+npm run dev
